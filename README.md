@@ -4,7 +4,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Project-Data%20Analysis-blueviolet?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Deployment-Streamlit-ff4b4b?style=for-the-badge"/>
+  <a href="https://airbnb-booking-analysisgit-cxrpaaqephwyjcdvyb5xrp.streamlit.app">
+    <img src="https://img.shields.io/badge/Live%20Demo-Click%20Here-brightgreen?style=for-the-badge"/>
+  </a>
 </p>
 
 ---
@@ -16,6 +18,7 @@ The goal is to identify **affordable locations for travelers** and uncover
 **key factors influencing rental prices** using Exploratory Data Analysis (EDA).
 
 🔗 GitHub Repo: [Link](https://github.com/pragya0405/airbnb-booking-analysis)
+🌐 Live Demo: [Link](https://airbnb-booking-analysisgit-cxrpaaqephwyjcdvyb5xrp.streamlit.app)
 
 ---
 
@@ -36,6 +39,9 @@ The goal is to identify **affordable locations for travelers** and uncover
 ---
 
 ## 🖥️ Streamlit Web App  
+
+🌐 **Live Demo:** [Click here to explore](https://airbnb-booking-analysisgit-cxrpaaqephwyjcdvyb5xrp.streamlit.app)
+
 This project is also deployed as an **interactive Streamlit application**, allowing users to:
 - Explore average prices by borough  
 - Visualize correlations between numeric features  
@@ -85,6 +91,8 @@ Capstone-EDA-Airbnb-NYC
 
 ## ▶️ How to Run Locally  
 
+> 💡 **Prefer not to install?** Try the [Live Demo](https://airbnb-booking-analysisgit-cxrpaaqephwyjcdvyb5xrp.streamlit.app) directly.
+
 ### 1️⃣ Clone the repository  
 ```
 git clone https://github.com/pragya0405/airbnb-booking-analysis.git
@@ -113,7 +121,7 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 
 **Pragya**  
-🚀 Data Analyst / Data Science Developer
+🚀 Data Science Developer
 
 <h3 align="center">📬 Let's Connect</h3>
 
