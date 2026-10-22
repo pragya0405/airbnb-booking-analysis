@@ -121,8 +121,7 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 
 **Pragya**  
-🚀 Data Science Developer
-
+🚀 Data Analyst
 <h3 align="center">📬 Let's Connect</h3>
 
 <p align="center">
