@@ -81,8 +81,8 @@ html, body, [class*="css"] {
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 .metric-card .accent-bar {
-    width: 100%;
-    height: 4px;
+    width: 32px;
+    height: 3px;
     border-radius: 2px;
     margin-bottom: 0.7rem;
 }
@@ -157,10 +157,10 @@ section[data-testid="stSidebar"] .stMarkdown h4 {
     color: var(--gray);
 }
 .stTabs [aria-selected="true"] {
-    background: linear-gradient(135deg, #FFF5F6, #FFFFFF) !important;
-    box-shadow: 0 2px 8px rgba(255,56,92,0.15);
+    background: var(--white) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     font-weight: 600;
-    color: #FF385C !important;
+    color: var(--primary) !important;
 }
 .stTabs [data-baseweb="tab-highlight"] {
     background-color: var(--primary);
@@ -203,8 +203,8 @@ section[data-testid="stSidebar"] .stMarkdown h4 {
 # ─────────────────────────────────────────────────────────────────────
 # Constants
 # ─────────────────────────────────────────────────────────────────────
-PALETTE = ['#FF385C', '#00BFA6', '#FFD23F', '#6C5CE7', '#00CEC9', '#FD79A8',
-           '#E17055', '#55EFC4']
+PALETTE = ['#FF385C', '#00A699', '#FFB400', '#5B5B5B', '#8E44AD', '#2E86DE',
+           '#E67E22', '#1ABC9C']
 
 
 def style_chart(fig, height=420, show_legend=False):
@@ -325,8 +325,8 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     most_exp = borough_prices.idxmax()
     st.markdown(f"""
-    <div class="metric-card" style="background: #FFF5F6; border-color: #FFD0D8;">
-        <div class="accent-bar" style="background: linear-gradient(90deg, #FF385C, #FF6B9D);"></div>
+    <div class="metric-card">
+        <div class="accent-bar" style="background: var(--primary);"></div>
         <div class="label">Most Expensive</div>
         <div class="value">{most_exp}</div>
         <div class="subtext">Avg ${borough_prices.max():.0f}/night</div>
@@ -336,8 +336,8 @@ with col1:
 with col2:
     most_aff = borough_prices.idxmin()
     st.markdown(f"""
-    <div class="metric-card" style="background: #F0FFFB; border-color: #B2F2E8;">
-        <div class="accent-bar" style="background: linear-gradient(90deg, #00BFA6, #00CEC9);"></div>
+    <div class="metric-card">
+        <div class="accent-bar" style="background: var(--teal);"></div>
         <div class="label">Most Affordable</div>
         <div class="value">{most_aff}</div>
         <div class="subtext">Avg ${borough_prices.min():.0f}/night</div>
@@ -347,8 +347,8 @@ with col2:
 with col3:
     popular = filtered_df['room_type'].mode()[0]
     st.markdown(f"""
-    <div class="metric-card" style="background: #FFFDF0; border-color: #FFF0B3;">
-        <div class="accent-bar" style="background: linear-gradient(90deg, #FFD23F, #FFB400);"></div>
+    <div class="metric-card">
+        <div class="accent-bar" style="background: var(--amber);"></div>
         <div class="label">Most Common Room</div>
         <div class="value">{popular}</div>
         <div class="subtext">{(filtered_df['room_type'] == popular).sum():,} listings</div>
@@ -358,8 +358,8 @@ with col3:
 with col4:
     avg_reviews = filtered_df['number_of_reviews'].mean()
     st.markdown(f"""
-    <div class="metric-card" style="background: #F5F3FF; border-color: #D5D0FF;">
-        <div class="accent-bar" style="background: linear-gradient(90deg, #6C5CE7, #A29BFE);"></div>
+    <div class="metric-card">
+        <div class="accent-bar" style="background: #5B5B5B;"></div>
         <div class="label">Avg Reviews</div>
         <div class="value">{avg_reviews:.0f}</div>
         <div class="subtext">per listing</div>
@@ -389,7 +389,7 @@ with tab1:
                         .mean().sort_values(ascending=False).reset_index())
         fig1 = px.bar(
             avg_borough, x='neighbourhood_group', y='price',
-            color='price', color_continuous_scale='Plasma',
+            color='price', color_continuous_scale=['#FF385C', '#FFB400'],
             labels={'neighbourhood_group': 'Borough', 'price': 'Avg Price ($)'},
             text='price',
         )
@@ -408,7 +408,7 @@ with tab1:
                     .mean().sort_values(ascending=False).reset_index())
         fig2 = px.bar(
             avg_room, x='room_type', y='price',
-            color='price', color_continuous_scale='Inferno',
+            color='price', color_continuous_scale=['#00A699', '#FFB400'],
             labels={'room_type': 'Room Type', 'price': 'Avg Price ($)'},
             text='price',
         )
@@ -490,7 +490,7 @@ with tab2:
                   .mean().sort_values(ascending=False).head(10).reset_index())
         fig5 = px.bar(
             top_nb, y='neighbourhood', x='price', orientation='h',
-            color='price', color_continuous_scale='Sunset',
+            color='price', color_continuous_scale=['#FF385C', '#8B0000'],
             labels={'neighbourhood': '', 'price': 'Avg Price ($)'},
             text='price',
         )
@@ -510,7 +510,7 @@ with tab2:
                   .mean().sort_values().head(10).reset_index())
         fig6 = px.bar(
             bot_nb, y='neighbourhood', x='price', orientation='h',
-            color='price', color_continuous_scale='Tealgrn',
+            color='price', color_continuous_scale=['#00A699', '#006B66'],
             labels={'neighbourhood': '', 'price': 'Avg Price ($)'},
             text='price',
         )
@@ -597,7 +597,7 @@ with tab4:
         rc.columns = ['Room Type', 'Count']
         fig9 = px.pie(
             rc, values='Count', names='Room Type', hole=0.45,
-            color_discrete_sequence=['#FF385C', '#00BFA6', '#FFD23F'],
+            color_discrete_sequence=['#FF385C', '#00A699', '#FFB400'],
         )
         fig9.update_traces(
             textposition='inside', textinfo='percent+label',
